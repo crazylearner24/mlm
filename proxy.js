@@ -120,7 +120,7 @@ api.get('/bookmarklet', (req, res) => {
     
     // The "Universal Bypass": Open a hidden popup/tab to send the token.
     // Navigating to a page is almost always allowed by CSP.
-    var win = window.open('http://127.0.0.1:3005/api/storetoken?token=' + encodeURIComponent(t), '_blank', 'width=100,height=100,left=10,top=10');
+    var win = window.open('https://backend-842w.onrender.com/api/storetoken?token=' + encodeURIComponent(t), '_blank', 'width=100,height=100,left=10,top=10');
     if(!win || win.closed || typeof win.closed=='undefined') {
         alert('❌ Popup blocked! Please allow popups for Sairam portal and try again.');
     } else {
@@ -142,7 +142,7 @@ api.post('/verify-pin', (req, res) => {
 });
 
 app.use('/api', api);
-app.get('/', (req, res) => res.send('Proxy Active on 127.0.0.1:3005'));
+app.get('/', (req, res) => res.send('Replica Proxy Active'));
 
 const PORT = 3005;
-app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Proxy on 127.0.0.1:3005`));
+app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Proxy running on port ${PORT}`));
