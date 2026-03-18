@@ -17,7 +17,7 @@ const api = express.Router();
 const EDWISELY_DASH_URL = "https://rma2yovfd6.execute-api.ap-south-1.amazonaws.com/prod/v2/getDashboard";
 const EDWISELY_QUES_URL = "https://bgwwm5z2al.execute-api.ap-south-1.amazonaws.com/prod/questionnaire";
 
-const DEFAULT_PIN = "5050";
+const DEFAULT_PIN = "123456790";
 
 let capturedToken = null;
 
