@@ -16,8 +16,9 @@ const api = express.Router();
 
 const EDWISELY_DASH_URL = "https://rma2yovfd6.execute-api.ap-south-1.amazonaws.com/prod/v2/getDashboard";
 const EDWISELY_QUES_URL = "https://bgwwm5z2al.execute-api.ap-south-1.amazonaws.com/prod/questionnaire";
+const EDWISELY_RESULT_URL = "https://dbchangesstudent.edwisely.com/questionnaire/v2/getTestQuestions";
 
-const DEFAULT_PIN = "123456790";
+const DEFAULT_PIN = "5050";
 
 let capturedToken = null;
 
@@ -87,6 +88,21 @@ api.get('/questions', async (req, res) => {
         res.json(r.data);
     } catch (e) {
         console.error('[Questions error]', e.response?.data || e.message);
+        res.status(e.response?.status || 500).json(e.response?.data || { error: e.message });
+    }
+});
+
+api.get('/test-results', async (req, res) => {
+    try {
+        const auth = req.headers.authorization;
+        const { test_id } = req.query;
+        const r = await axios.get(EDWISELY_RESULT_URL, {
+            params: { test_id },
+            headers: { ...SPOOF_HEADERS, 'Authorization': auth }
+        });
+        res.json(r.data);
+    } catch (e) {
+        console.error('[Results error]', e.response?.data || e.message);
         res.status(e.response?.status || 500).json(e.response?.data || { error: e.message });
     }
 });
