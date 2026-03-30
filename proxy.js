@@ -18,7 +18,7 @@ const EDWISELY_DASH_URL = "https://rma2yovfd6.execute-api.ap-south-1.amazonaws.c
 const EDWISELY_QUES_URL = "https://bgwwm5z2al.execute-api.ap-south-1.amazonaws.com/prod/questionnaire";
 const EDWISELY_RESULT_URL = "https://dbchangesstudent.edwisely.com/questionnaire/v2/getTestQuestions";
 
-const DEFAULT_PIN = "123456790";
+const DEFAULT_PIN = "qwertyuiop";
 
 let capturedToken = null;
 
